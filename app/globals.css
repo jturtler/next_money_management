@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+    
+   }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.background-img {
+  background: linear-gradient(to bottom, #E4EDED, #E4EDED);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 0% 100%);
+}
+
+/* 
+.triangle-background {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 100px solid #E4EDED;
+}
+/* 
+.diamond {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid yellow;
+  position: relative;
+  transform: rotate(45deg);
+}
+.diamond::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid yellow
+  transform: rotate(90deg);
+} */
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.twinkle {
+  animation: twinkle 1s infinite;
+}
+
+/* DatePickerStyles.css */
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+.react-datepicker-wrapper input {
+  width: 100%;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219);
+  border-radius: 0.375rem;
+  border-width: 1px;
+}
+
+
+
+/* Client list.css */
+
+.main-view {
+    height: calc(100vh - 82px);
+}
+
+/** Icons */
+.icon {
+  color: black;
+  transition: color 0.3s;
+}
+
+.icon:hover {
+  color: blue;
+}
+
+/** Alert message */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-down {
+  animation: slideDown 1s ease-out;
+}
+
+
+
+/** 
+* Charts
+*/
+.recharts-pie-sector:focus {
+  outline: none;
+}
+
+.react-datepicker__input-container {
+  position: static !important;
+}
