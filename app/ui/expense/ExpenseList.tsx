@@ -25,6 +25,7 @@ export default function ExpenseList() {
 	const [dataVisualization, setDataVisualization] = useState<string>(Constant.DATA_VISUALIZATION_DATA_LIST);
 
 	const filterExpenseList = () => {
+		console.log(startDate + " ---- " + endDate);
 		let filteredList = expenseList?.filter((item) => {
 
 			if (categoriesFilter.length == 0 || ( categoriesFilter.indexOf("" ) < 0 && categoriesFilter.indexOf(item.categoryId) < 0)) {

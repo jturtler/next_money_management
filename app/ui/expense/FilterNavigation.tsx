@@ -117,6 +117,17 @@ export default function FilterNavigation({ onSelectCategory, onSeleteDataVisuali
         return categoryNames;
     }
 
+    const setSampleMonths = () => {
+        const newStartDate = new Date(2023, 0, 1);
+        const newEndDate = new Date();
+
+        setStartDate( newStartDate );
+        onSeleteStartDate(newStartDate);
+        
+        setEndDate( newEndDate );
+        onSelectEndDate(newEndDate);
+    }
+
     return (
         <nav className="bg-background-color">
             <div className="relative text-gray-800 bg-dark-slate pl-4 pr-2 flex flex-row border border-gray-200 items-center py-1">
@@ -151,9 +162,9 @@ export default function FilterNavigation({ onSelectCategory, onSeleteDataVisuali
             </div>
 
 
-            {/* {!showReduceFilterBar && <div className="flex flex-row justify-end items-center w-full m-auto">
-                <IoIosArrowDropupCircle className="text-blue-navy mx-3 my-2 cursor-pointer" size={20} onClick={() => setShowReduceFilterBar(true)}/>
-            </div>} */}
+            {!showReduceFilterBar && <div className="flex flex-row justify-end items-center w-full m-auto">
+                <IoIosArrowDropupCircle className="text-blue-navy mx-3 cursor-pointer" size={20} onClick={() => setShowReduceFilterBar(true)}/>
+            </div>}
 
             {showReduceFilterBar && <div className="flex flex-row bg-sunny-yellow cursor-pointer" onClick={() => setShowReduceFilterBar(false)}>
                 <div className='italic p-2 text-sm'>Expense data is from <span className="font-semibold">{Utils.formatDisplayDateObj(startDate!)}</span> to <span className="font-semibold">{Utils.formatDisplayDateObj(endDate!)}</span> of categories <span className="font-semibold">{getCategoryNameList().join(", ")}</span></div>
@@ -162,7 +173,7 @@ export default function FilterNavigation({ onSelectCategory, onSeleteDataVisuali
                 <IoIosArrowDropdownCircle className="text-blue-navy mx-3 mt-2 cursor-pointer" size={20} />
             </div>}
 
-            <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 px-5 mt-3 gap-x-3 mb-4 text-gray-600 items-start" style={{ display: showReduceFilterBar ? "none" : "" }}>
+            <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 px-5 gap-x-3 mb-4 text-gray-600 items-start" style={{ display: showReduceFilterBar ? "none" : "" }}>
 
                 {/* Category list with checkboxes */}
                 <div className="mb-3 col-span-3">
@@ -204,15 +215,6 @@ export default function FilterNavigation({ onSelectCategory, onSeleteDataVisuali
                     <div>
                         <div className="relative flex items-center">
                             <label className="flex-1 whitespace-nowrap text-gray-700 mb-2 text-sm">Start Date</label>
-                            {!showReduceFilterBar && (
-                                <div className="absolute top-0 right-0 mr-2 flex items-center">
-                                    <IoIosArrowDropupCircle
-                                        className="text-blue-navy cursor-pointer"
-                                        size={20}
-                                        onClick={() => setShowReduceFilterBar(true)}
-                                    />
-                                </div>
-                            )}
                         </div>
 
                         {/* Start Date Picker */}
@@ -223,7 +225,7 @@ export default function FilterNavigation({ onSelectCategory, onSeleteDataVisuali
                         />
                     </div>
 
-                    <div className="mt-3">
+                    <div className="mt-2">
                         <label className="block text-gray-700 mb-2 text-sm" htmlFor="endDate">End Date</label>
                         {/* End Date Picker */}
                         <CustomDatePicker
@@ -231,6 +233,10 @@ export default function FilterNavigation({ onSelectCategory, onSeleteDataVisuali
                             selectedDate={endDate}
                             onDateChange={(date: Date | null) => { setEndDate(date); onSelectEndDate(date) }}
                         />
+                    </div>
+
+                    <div className="mt-1 cursor-pointer text-blue-600 italic text-sm" onClick={() => setSampleMonths()}>
+                        [Sample Months]
                     </div>
                 </div>
 
